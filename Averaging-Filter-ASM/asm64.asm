@@ -1,5 +1,23 @@
 PUBLIC ApplyAverageFilter
 
+.DATA
+input_data_pointer QWORD 0
+output_data_pointer QWORD 0
+widthk QWORD 0
+height QWORD 0
+radius DWORD 0
+x DWORD 0
+y DWORD 0
+ky DWORD 0
+kx DWORD 0
+rSUM DWORD 0
+gSUM DWORD 0
+bSUM DWORD 0
+count DWORD 0
+nx DWORD 0
+ny DWORD 0
+
+
 .CODE
 
 
@@ -14,127 +32,115 @@ PUBLIC ApplyAverageFilter
 
 
 ApplyAverageFilter proc
-    push rbx                ; Zapisujemy rejestry
-    push rbp
-    push rsi
-    push rdi
-    push r12
-    push r13
-    push r14
-    push r15
+    mov input_data_pointer, rcx
+    mov output_data_pointer, rdx
+    mov widthk, r8
+    mov height, r9
+    mov eax, DWORD PTR [rsp+40]              ; Za³aduj promieñ filtru do eax
+    mov radius, eax                           ; Zapisz promieñ filtru do zmiennej globalnej
 
-    ; Ustawienie stosu
-    mov rbp, rsp
+loopY:
+    mov eax, y
+    cmp rax, height
+    jge endloopY
 
-    ; Pobranie argumentów
-    mov rsi, rcx            ; WskaŸnik na dane wejœciowe
-    mov rdi, rdx            ; WskaŸnik na dane wyjœciowe
-    mov r10, r8             ; Szerokoœæ obrazu
-    mov r11, r9             ; Wysokoœæ obrazu
-    mov eax, dword ptr [rbp+8] ; Promieñ filtru (radius)
-    mov r12d, eax           ; Promieñ filtru
+    xor eax, eax
+    mov x, eax
+    loopX:
+        mov eax, x
+        cmp rax, widthk
+        jge endloopX
+        mov rSUM, 0
+        mov gSUM, 0
+        mov bSUM, 0
+        mov count, 0
 
-    ; Obliczenie wymiaru okna
-    imul r12d, 2            ; Promieñ * 2
-    add r12d, 1             ; (2*radius + 1)
+        xor eax, eax
+        sub eax, radius
+        mov ky, eax
 
-    xor rbx, rbx            ; Licznik wierszy Y
-OuterLoop:
-    xor rcx, rcx            ; Licznik kolumn X
+        loopKY:
+            mov eax, ky
+            cmp eax, radius
+            jg endloopKY
 
-InnerLoop:
-    ; Reset sum dla R, G, B i licznika pikseli
-    xor r8, r8              ; Suma R
-    xor r9, r9              ; Suma G
-    xor r15, r15            ; Suma B
-    xor r13, r13            ; Licznik pikseli
+            xor eax, eax
+            sub eax, radius
+            mov kx, eax
 
-    ; Iteracja w oknie filtru
-    mov r14, rbx            ; Start Y
-    sub r14, r12            ; Y - radius (teraz oba operandy maj¹ ten sam rozmiar)
+            loopKX:
+                mov eax, kx
+                cmp eax, radius
+                jg endloopKX
+                ;------------------D
+                mov eax, x
+                mov ebx, kx
+                add eax, ebx
+                mov nx, eax
+                
+                
+                mov eax, y
+                mov ebx, ky
+                add eax, ebx
+                mov ny, eax
 
-FilterLoopY:
-    mov rdx, r14
-    add rdx, r12            ; Y + radius (64-bitowy rejestr u¿yty zamiast 32-bitowego)
-    cmp rdx, 0              ; SprawdŸ doln¹ granicê
-    jl SkipRow
-    cmp rdx, r11            ; SprawdŸ górn¹ granicê
-    jge SkipRow
+                cmp nx, 0
+                jl IFniespelniony
+                mov eax, nx
+                cmp rax, widthk
+                jge IFniespelniony
 
-    mov r15, rcx            ; Start X
-    sub r15, r12           ; X - radius
+                cmp ny, 0
+                jl IFniespelniony
+                mov eax, ny
+                cmp rax, height
+                jge IFniespelniony
 
-FilterLoopX:
-    mov rdx, r15
-    add rdx, r12           ; X + radius
-    cmp rdx, 0              ; SprawdŸ lew¹ granicê
-    jl SkipPixel
-    cmp rdx, r10            ; SprawdŸ praw¹ granicê
-    jge SkipPixel
+                ; Getpixel             ; pobiera zle wartosci pixeli, powinno pobieraæ wartosci pixeli zalezne od nx i ny
+                mov rbx, [input_data_pointer]
+                ;mov eax, [rbx]
+                xor rax, rax
+                xor rdx, rdx
+                mov eax, nx
+                imul eax, 4             ; moze nie dzialac ale powinno
+                mov ecx, eax
+                mov eax, ny
+                mov rdx, widthk
+                imul eax, edx
+                imul eax, 4
+                add eax, ecx
+                mov eax, [rbx + rcx]
+             
 
-    ; Obliczenie wskaŸnika do danych piksela
-    mov rax, r14            ; Wiersz
-    imul rax, r10           ; Wiersz * szerokoœæ
-    add rax, r15            ; Kolumna
-    imul rax, 3             ; Rozmiar piksela (RGB)
+                ;mov eax, [rbx + 1024]           
+                ;mov eax, [rbx + 4]
+                ;mov eax, [rbx + 8]
+                ;mov eax, [rbx + 12]
+                ;mov eax, DWORD ptr [input_data_pointer]
+                ;------------------)
+    IFniespelniony:
 
-    ; Dodanie wartoœci R, G, B
-    add r8b, byte ptr [rsi+rax]      ; Dodanie wartoœci R (8-bitowy rejestr)
-    add r9b, byte ptr [rsi+rax+1]    ; Dodanie wartoœci G (8-bitowy rejestr)
-    add r15b, byte ptr [rsi+rax+2]   ; Dodanie wartoœci B (8-bitowy rejestr)
-    inc r13                         ; Licznik pikseli
+                inc kx
+                jmp loopKX
+            endloopKX:
+                   
 
-SkipPixel:
-    inc r15            ; Nastêpna kolumna w oknie
-    cmp r15, rcx
-    jl FilterLoopX
+        inc ky
+        jmp loopKY
+        endloopKY:
+        
+    inc x
+    jmp loopX
+    endloopX:
+    
+inc y
+jmp loopY
+endloopY:
 
-SkipRow:
-    inc r14            ; Nastêpny wiersz w oknie
-    cmp r14, rbx
-    jl FilterLoopY
 
-    ; Œrednia pikseli
-    test r13, r13      ; Sprawdzenie liczby pikseli
-    jz SkipWrite       ; Uniknij dzielenia przez 0
 
-    mov eax, r8d       ; Suma R
-    cdq                ; Przygotowanie do dzielenia
-    idiv r13d          ; R = R / liczba pikseli
-    imul rax, rcx, 3                ; rax = rcx * 3
-    mov byte ptr [rdi+rax], al      ; Zapisz wartoœæ AL do adresu
+    
 
-    mov eax, r9d       ; Suma G
-    cdq
-    idiv r13d          ; G = G / liczba pikseli
-    imul rax, rcx, 3             ; rax = rcx * 3
-    mov byte ptr [rdi+rax+1], al ; Zapisz wartoœæ AL do adresu (przesuniêcie +1)
-
-    mov eax, r15d      ; Suma B
-    cdq
-    idiv r13d          ; B = B / liczba pikseli
-    imul rax, rcx, 3             ; rax = rcx * 3
-    mov byte ptr [rdi+rax+2], al ; Zapisz wartoœæ AL pod adresem (rdi + rax + 2)
-
-SkipWrite:
-    inc rcx
-    cmp rcx, r10
-    jl InnerLoop
-
-    inc rbx
-    cmp rbx, r11
-    jl OuterLoop
-
-    ; Przywrócenie rejestrów
-    mov rsp, rbp
-    pop r15
-    pop r14
-    pop r13
-    pop r12
-    pop rdi
-    pop rsi
-    pop rbp
-    pop rbx
 
     ret
     

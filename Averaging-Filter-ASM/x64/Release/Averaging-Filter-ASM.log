@@ -1,43 +1,6 @@
-﻿  Averaging-Filter-ASM.cpp
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         with
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:             T=int
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         and
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:             T=float
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,78): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         with
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:             T=int
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         and
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:             T=float
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(134,66): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         with
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:             T=int
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         and
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:             T=float
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,78): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         with
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:             T=int
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         ]
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         and
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         [
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:             T=float
-D:\Averaging-Filter-ASM\Averaging-Filter-ASM\Averaging-Filter-ASM.cpp(145,66): warning C4244:         ]
-  Trwa generowanie kodu
-  0 of 103 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  Averaging-Filter-ASM.vcxproj -> D:\Averaging-Filter-ASM\x64\Release\Averaging-Filter-ASM.exe
+﻿  Assembling asm64.asm...
+asm64.asm(6): error A2008: syntax error : width
+asm64.asm(28): error A2070: invalid instruction operands
+asm64.asm(26): error A2081: missing operand after unary operator
+asm64.asm(27): error A2022: instruction operands must be the same size
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: Polecenie ml64.exe /c /nologo /Zi /Fo"x64\Release\asm64.obj" /W3 /errorReport:prompt  /Taasm64.asm zostało zakończone; kod błędu: 1.

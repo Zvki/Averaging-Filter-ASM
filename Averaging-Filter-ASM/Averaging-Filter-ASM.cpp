@@ -4,7 +4,7 @@
 #include <SFML/System.hpp>
 #include <iostream>
 
-extern "C" void __fastcall ApplyAverageFilter(unsigned char* input, unsigned char* output, int width, int height, int radius);
+extern "C" void __fastcall ApplyAverageFilter(unsigned char* input, unsigned char* output, int width, int height, uint32_t radius);
 
 // Funkcja filtru uśredniającego
 sf::Image applyAverageFilter(const sf::Image& inputImage, int radius = 2) {
@@ -15,6 +15,7 @@ sf::Image applyAverageFilter(const sf::Image& inputImage, int radius = 2) {
     int height = inputImage.getSize().y;
 
     for (int y = 0; y < height; ++y) {
+        std::cout << y << std::endl;
         for (int x = 0; x < width; ++x) {
             int rSum = 0, gSum = 0, bSum = 0;
             int count = 0;
@@ -73,7 +74,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
     // Nagłówek
     sf::Font font;
-    if (!font.loadFromFile("res/FunnelSans-Regular.ttf")) {
+    if (!font.loadFromFile("D:\\Informatyka\\JA\\proba2\\JASol\\x64\\Release\\FunnelSans-Regular.ttf")) {
         std::cerr << "Nie mozna wczytac czcionki arial.ttf. Uzywam czcionki domyslnej." << std::endl;
     }
 
@@ -87,7 +88,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
     fileSelectBox.setPosition(windowWidth / 2 - 300, 100);
     fileSelectBox.setFillColor(sf::Color(200, 200, 200));
 
-    std::string basePath = "D:/AveragingFilter-ASM/";
+    std::string basePath = "D:/";
     std::string fileName = "";
     sf::Text userInput(basePath, font, 20);
     userInput.setPosition(windowWidth / 2 - 280, 115);
@@ -152,10 +153,12 @@ int _tmain(int argc, _TCHAR* argv[]) {
                         // Przygotowanie obrazu wyjściowego
                         outputImage.create(inputImage.getSize().x, inputImage.getSize().y);
 
+                        uint32_t x = 2;
+
                         // Wywołanie funkcji assemblerowej
                         ApplyAverageFilter(const_cast<unsigned char*>(inputImage.getPixelsPtr()),
                             const_cast<unsigned char*>(outputImage.getPixelsPtr()),
-                            inputImage.getSize().x, inputImage.getSize().y, 2);
+                            inputImage.getSize().x, inputImage.getSize().y, x);
 
                         // Zapisanie przetworzonego obrazu
                         if (outputImage.saveToFile(basePath + "wynik_asm.png")) {
