@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{589F2DF8-9693-455B-A3BC-9B8F03EA6A7E}|Averaging-Filter-ASM\\Averaging-Filter-ASM.vcxproj|solutionrelative:Averaging-Filter-ASM\\asm64.asm||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{589F2DF8-9693-455B-A3BC-9B8F03EA6A7E}|Averaging-Filter-ASM\\Averaging-Filter-ASM.vcxproj|D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{589F2DF8-9693-455B-A3BC-9B8F03EA6A7E}|Averaging-Filter-ASM\\Averaging-Filter-ASM.vcxproj|solutionrelative:Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -18,17 +21,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 183,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "masm.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\BuildCustomizations\\masm.targets",
+              "ViewState": "AgIAADQAAAAAAAAAAAAIwEYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-01-19T21:50:40.875Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "asm64.asm",
               "DocumentMoniker": "D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\asm64.asm",
               "RelativeDocumentMoniker": "Averaging-Filter-ASM\\asm64.asm",
-              "ToolTip": "D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\asm64.asm",
-              "RelativeToolTip": "Averaging-Filter-ASM\\asm64.asm",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAQwGoAAAAZAAAAAAAAAA==",
+              "ToolTip": "D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\asm64.asm*",
+              "RelativeToolTip": "Averaging-Filter-ASM\\asm64.asm*",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAYwH0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-01-11T02:29:44.722Z",
               "EditorCaption": ""
@@ -41,13 +55,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Averaging-Filter-ASM.cpp",
               "DocumentMoniker": "D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp",
               "RelativeDocumentMoniker": "Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp",
               "ToolTip": "D:\\Repozytoria\\assembler\\Averaging-Filter-ASM\\Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp",
               "RelativeToolTip": "Averaging-Filter-ASM\\Averaging-Filter-ASM.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAJ8AAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-05T14:25:01.697Z",
               "EditorCaption": ""
